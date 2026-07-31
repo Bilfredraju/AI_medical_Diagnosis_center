@@ -10,8 +10,8 @@ train_dataset = tf.keras.preprocessing.image_dataset_from_directory(
 )
 
 validation_dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    "data/validation",
-    image_size=(224, 224),
+    "data/Testing",
+    image_size=(224,224),
     batch_size=32
 )
 
