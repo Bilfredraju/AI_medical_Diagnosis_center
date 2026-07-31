@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-from frontend.utils.helper import show_header, show_footer
+from utils.helper import show_header, show_footer
 
 API_URL = "http://127.0.0.1:8000/predict"
 
