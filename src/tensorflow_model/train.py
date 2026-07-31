@@ -40,6 +40,14 @@ test_dataset = image_dataset_from_directory(
     shuffle=False
 )
 
+# Optimize dataset performance
+
+AUTOTUNE = tf.data.AUTOTUNE
+
+train_dataset = train_dataset.prefetch(buffer_size=AUTOTUNE)
+validation_dataset = validation_dataset.prefetch(buffer_size=AUTOTUNE)
+test_dataset = test_dataset.prefetch(buffer_size=AUTOTUNE)
+
 # Build Model
 model = build_model()
 
@@ -50,5 +58,19 @@ model.compile(
     metrics=["accuracy"]
 )
 
-# Display Model Summary
-model.summary()
+EPOCHS = 10
+
+history = model.fit(
+    train_dataset,
+    validation_data=validation_dataset,
+    epochs=EPOCHS
+)
+
+model.save("models/tensorflow_brain_tumor_model.keras")
+
+print("Model saved successfully!")
+
+
+from src.tensorflow_model.plot_history import plot_history
+
+plot_history(history)
