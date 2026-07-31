@@ -1,6 +1,17 @@
 import streamlit as st
 import requests
 
+from frontend.utils.helper import show_header, show_footer
+
+show_header()
+
+...
+
+show_footer()
+
+
+
+
 API_URL = "http://127.0.0.1:8000/predict"
 
 st.set_page_config(
@@ -55,8 +66,26 @@ if uploaded_file is not None:
 
             st.subheader("Confidence")
 
-            st.write(f"{result['confidence']*100:.2f}%")
+            confidence = result["confidence"]
+
+            st.progress(confidence)
+
+            st.success(
+            f"Confidence : {confidence*100:.2f}%"
+)
 
         else:
 
             st.error("Prediction failed.")
+
+
+
+
+st.warning(
+    """
+This AI prediction is intended for educational purposes.
+
+Always consult a qualified medical professional
+before making any diagnosis.
+"""
+)            
