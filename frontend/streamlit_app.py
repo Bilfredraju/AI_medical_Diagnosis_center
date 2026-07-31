@@ -3,15 +3,6 @@ import requests
 
 from frontend.utils.helper import show_header, show_footer
 
-show_header()
-
-...
-
-show_footer()
-
-
-
-
 API_URL = "http://127.0.0.1:8000/predict"
 
 st.set_page_config(
@@ -20,11 +11,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🧠 AI Medical Diagnosis System")
-
-st.write(
-    "Upload a Brain MRI image for tumor prediction."
-)
+show_header()
 
 uploaded_file = st.file_uploader(
     "Choose an MRI image",
@@ -71,15 +58,24 @@ if uploaded_file is not None:
             st.progress(confidence)
 
             st.success(
-            f"Confidence : {confidence*100:.2f}%"
-)
+                f"Confidence : {confidence*100:.2f}%"
+            )
+
+            st.subheader("Prediction Probability")
+
+            probabilities = result["probabilities"]
+
+            for disease, value in probabilities.items():
+
+                st.write(f"### {disease}")
+
+                st.progress(float(value))
+
+                st.write(f"{value*100:.2f}%")
 
         else:
 
             st.error("Prediction failed.")
-
-
-
 
 st.warning(
     """
@@ -88,4 +84,6 @@ This AI prediction is intended for educational purposes.
 Always consult a qualified medical professional
 before making any diagnosis.
 """
-)            
+)
+
+show_footer()
