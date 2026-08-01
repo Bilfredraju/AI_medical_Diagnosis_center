@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+
+  medical-api:
+
+    build: .
+
+    container_name: ai-medical-api
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped

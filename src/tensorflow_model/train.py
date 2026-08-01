@@ -66,7 +66,7 @@ model.compile(
     metrics=["accuracy"]
 )
 
-EPOCHS = 2
+EPOCHS = 10
 
 tensorboard_callback = TensorBoard(
     log_dir="logs",
@@ -121,7 +121,7 @@ with mlflow.start_run():
 history = model.fit(
     train_dataset,
     validation_data=validation_dataset,
-    epochs=2,
+    epochs=10,
     callbacks=[tensorboard_callback]
 )
 
