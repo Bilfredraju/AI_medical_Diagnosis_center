@@ -1,11 +1,12 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image_dataset_from_directory
+from tensorflow.keras.callbacks import TensorBoard
 
 from src.tensorflow_model.model import build_model
 
 # Dataset Paths
-TRAIN_DIR = "data/Training"
-TEST_DIR = "data/Testing"
+TRAIN_DIR = "data/train"
+TEST_DIR = "data/test"
 
 # Configuration
 IMAGE_SIZE = (224, 224)
@@ -58,13 +59,23 @@ model.compile(
     metrics=["accuracy"]
 )
 
-EPOCHS = 10
+EPOCHS = 2
+
+tensorboard_callback = TensorBoard(
+    log_dir="logs",
+    histogram_freq=0
+)
 
 history = model.fit(
     train_dataset,
     validation_data=validation_dataset,
-    epochs=EPOCHS
+    epochs=2,
+    callbacks=[tensorboard_callback]
 )
+
+
+
+
 
 model.save("models/tensorflow_brain_tumor_model.keras")
 
