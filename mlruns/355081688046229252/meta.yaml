@@ -1,0 +1,6 @@
+artifact_location: file:///D:/medical-diagnosis-system/mlruns/355081688046229252
+creation_time: 1785559989033
+experiment_id: '355081688046229252'
+last_update_time: 1785559989033
+lifecycle_stage: active
+name: Brain Tumor Diagnosis - TensorFlow CNN

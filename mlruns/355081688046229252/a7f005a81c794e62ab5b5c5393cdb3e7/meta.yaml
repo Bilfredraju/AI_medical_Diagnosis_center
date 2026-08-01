@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/medical-diagnosis-system/mlruns/355081688046229252/a7f005a81c794e62ab5b5c5393cdb3e7/artifacts
+end_time: 1785560308362
+entry_point_name: ''
+experiment_id: '355081688046229252'
+lifecycle_stage: active
+run_id: a7f005a81c794e62ab5b5c5393cdb3e7
+run_name: carefree-lamb-345
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1785559991362
+status: 3
+tags: []
+user_id: alfre
